@@ -73,6 +73,8 @@
 </style>
 
 <script>
+let interval
+let timeout
 import moment from 'moment'
 import moment_timezone from 'moment-timezone'
 
@@ -81,29 +83,35 @@ export default{
     return {
       y: 2020,
       m: 9,
-      d: new Date()
+      d: new Date(),
+      current: true,
     }
   },
   methods:{
     nxt(){
+      this.current = false
       this.m += 1
       if(this.m >= 13){
         this.m = 1
         this.y += 1
       }
+      timeout = setTimeout(this.cr, 600000)
     },
     bck(){
+      this.current = false
       this.m -= 1
       if(this.m <= 0){
         this.m = 12
         this.y -= 1
       }
+      timeout = setTimeout(this.cr, 180000)
     },
     cr(){
       let c = new Date()
       this.y = c.getFullYear()
       this.m = c.getMonth() + 1
       this.d = c
+      this.current = true
     },
   },
   computed:{
@@ -141,8 +149,12 @@ export default{
       return r
     }
   },
-  created(){
+  mounted(){
     this.cr()
-  }
+    interval = setInterval(function(){this.current&&this.cr}, 60000)
+  },
+  destroyed (){
+    clearInterval(interval)
+  },
 }
 </script>
