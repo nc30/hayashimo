@@ -10,6 +10,8 @@
       </div>
     </div>
     <div class="lf">
+      <weather/>
+      <calender />
     </div>
     <div class="rl">
       <header id="title">
@@ -25,7 +27,7 @@
         <span>Hello! 0x32f!!</span>
       </div>
 
-      <div class="loader">
+      <div v-if="$store.state.loading" class="loader">
         <div class="ball-grid-pulse">
           <div></div>
           <div></div>
@@ -44,9 +46,13 @@
 
 <script>
 import miniclock from '~/components/common/miniclock'
+import weather from '~/components/weather'
+import calender from '~/components/calender'
 export default {
   components:{
-    miniclock
+    miniclock,
+    weather,
+    calender,
   },
   data() {
     return {
@@ -132,12 +138,17 @@ export default {
     height:100vh;
     width: 80px;
   }
+  .lf{
+    margin-left: 90px;
+    width: 50%;
+    height: 100%;
+    padding: 2em 0;
+  }
   .rl{
     position: absolute;
     right: 0;
     top:0;
     bottom: 0;
-    // border:solid red 1px;
     height: 100vh;
     width: 40%;
     padding: 1em 1em 1em 0;
