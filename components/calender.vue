@@ -17,7 +17,8 @@
       </div>
     </div>
     <div class="inf">
-      <h2>昭和{{y-1925}}年 {{m}}月</h2>
+      <h2>昭和{{y-1925}}年{{m}}月</h2>
+      <p style="text-align: center">{{mun}}</p>
       <button @click="bck"><i class="fas fa-chevron-left"></i></button>
       <button @click="cr">current</button>
       <button @click="nxt"><i class="fas fa-chevron-right"></i></button>
@@ -74,6 +75,20 @@
 <script>
 let interval
 let timeout
+const cal = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
 import moment from 'moment'
 import moment_timezone from 'moment-timezone'
 
@@ -114,6 +129,9 @@ export default{
     },
   },
   computed:{
+    mun(){
+      return cal[this.m-1]
+    },
     month(){
       let r = [];
       const start = new Date(this.y, this.m, 1)

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <modal/>
     <div class="menu">
       <div id="mainMenu">
         <ul>
@@ -10,6 +11,7 @@
       </div>
     </div>
     <div class="lf">
+      <notifcations/>
       <weather/>
       <calender />
     </div>
@@ -19,12 +21,14 @@
       </header>
       <miniclock />
       <div id="attend">
-        <button class="disabled">出勤</button>
-        <button>退勤</button>
+        <button :class="{disabled: $store.state.status.kintai > 0}">出勤</button>
+        <button :class="{disabled: $store.state.status.kintai == 0}">退勤</button>
       </div>
 
       <div id="messages">
-        <span>Hello! 0x32f!!</span>
+        <div v-for="m in $store.state.status.messages">
+          <span>{{m.message}}</span>
+        </div>
       </div>
 
       <div v-if="$store.state.loading" class="loader">
@@ -48,11 +52,13 @@
 import miniclock from '~/components/common/miniclock'
 import weather from '~/components/weather'
 import calender from '~/components/calender'
+import notifcations from '~/components/notifcations'
 export default {
   components:{
     miniclock,
     weather,
     calender,
+    notifcations,
   },
   data() {
     return {
@@ -73,7 +79,7 @@ export default {
 
   text-align: center;
   padding-top: 3em;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 #mainMenu{
   margin-top:2em;
@@ -106,6 +112,8 @@ export default {
 }
 #attend{
   text-align: right;
+  width: 100%;
+  text-align: center;
   button{
     padding: .5em 2em;
     margin-left: 10px;
