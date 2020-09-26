@@ -6,17 +6,16 @@ export const state = () => ({
     email: false,
   },
   kintai: 0,
-  messages: [
-    {
-      type: 'normal',
-      message: ''
-    }
-  ]
+  message: "Hello!",
+  messages: []
 })
 
 export const mutations = {
   set(state, t) {
   },
+  message(state, t){
+    state.message = t
+  }
 }
 
 export const actions = {

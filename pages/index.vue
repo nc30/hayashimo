@@ -28,6 +28,8 @@
         <button :class="{disabled: $store.state.status.kintai == 0}" @click="al">退勤</button>
       </div>
 
+      <message/>
+
       <div id="messages">
         <div v-for="m in $store.state.status.messages">
           <span>{{m.message}}</span>
@@ -52,17 +54,8 @@
 </template>
 
 <script>
-import miniclock from '~/components/common/miniclock'
-import weather from '~/components/weather'
-import calender from '~/components/calender'
-import notifcations from '~/components/notifcations'
+
 export default {
-  components:{
-    miniclock,
-    weather,
-    calender,
-    notifcations,
-  },
   data() {
     return {
     }

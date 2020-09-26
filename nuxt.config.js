@@ -3,6 +3,10 @@ export default {
     port: process.env.NUXT_PORT || 3003,
   },
 
+  env: {
+    NODE_ENV: process.env.NODE_ENV || 'development'
+  },
+
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
 
