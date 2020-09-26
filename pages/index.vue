@@ -11,7 +11,6 @@
       </div>
     </div>
     <div class="lf">
-      <notifcations/>
       <weather/>
       <calender />
     </div>
@@ -20,6 +19,7 @@
         <h1 @click="reload">Hayashimo</h1>
       </header>
       <miniclock />
+      <notifcations/>
       <div id="attend">
         <button :class="{disabled: $store.state.status.kintai > 0}">出勤</button>
         <button :class="{disabled: $store.state.status.kintai == 0}">退勤</button>
