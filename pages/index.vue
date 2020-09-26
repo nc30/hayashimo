@@ -15,12 +15,12 @@
     </div>
     <div class="rl">
       <header id="title">
-        <h1>Hayashimo</h1>
+        <h1 @click="reload">Hayashimo</h1>
       </header>
       <miniclock />
       <div id="attend">
-        <button class="disabled">Attend</button>
-        <button>Leave</button>
+        <button class="disabled">出勤</button>
+        <button>退勤</button>
       </div>
 
       <div id="messages">
@@ -56,7 +56,11 @@ export default {
   },
   data() {
     return {
-
+    }
+  },
+  methods:{
+    reload(){
+      location.reload()
     }
   }
 }

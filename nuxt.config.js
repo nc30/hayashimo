@@ -18,8 +18,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css' }
+    { rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css' }
     ]
   },
 
@@ -38,19 +37,6 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
   ],
-
-  toast: {
-      position: 'top-center',
-      register: [
-        {
-          name: 'my-error',
-          message: 'Oops...Something went wrong',
-          options: {
-            type: 'error'
-          }
-        }
-      ]
-  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [

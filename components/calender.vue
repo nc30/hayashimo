@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="inf">
-      <h2>{{m}} / {{y}}</h2>
+      <h2>昭和{{y-1925}}年 {{m}}月</h2>
       <button @click="bck"><i class="fas fa-chevron-left"></i></button>
       <button @click="cr">current</button>
       <button @click="nxt"><i class="fas fa-chevron-right"></i></button>
@@ -27,7 +27,6 @@
 
 <style lang="scss">
 #calender{
-  padding-top:1em;
   display: flex;
   h2{
     text-align: center;
@@ -36,8 +35,8 @@
     background:none;
     border-radius:5px;
     border:solid white 1px;
-    padding:.5em 1em;
-    margin: 5px;
+    padding:1em 1em;
+    margin: 8px;
     color:#fff;
     margin-top:15px;
     &:focus{

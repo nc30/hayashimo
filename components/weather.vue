@@ -1,10 +1,9 @@
 <template>
   <div id="weather">
     <div v-if="current">
-      <h2>{{current.name}}</h2>
       <div class="c">
         <div class="w">
-          {{current.weather[0].main}}
+          <img :src="'http://openweathermap.org/img/wn/'+current.weather[0].icon+'@2x.png'" />
         </div>
         <div class="m">
           <span class="cr">{{temp}}℃</span>
@@ -24,16 +23,18 @@
 
 <style lang="scss">
 #weather{
+  height: 105px;
   .c{
     display:flex;
   }
   .w{
-    width: 200px;
-    border: solid white 1px;
+    width: 150px;
+    text-align: center;
+    // border: solid white 1px;
   }
   .m{
+    margin-top: 1em;
     display: flex;
-    margin-left: 1.5em;
     .cr{
       display: block;
       font-size: 2.5em;
