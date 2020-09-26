@@ -56,7 +56,8 @@ export default {
   }
 }
 </script>
-<style scoped>
+
+<style scoped lang="scss">
 .CurrentTime {
   text-align: right;
   font-size: 2em;
@@ -78,7 +79,7 @@ export default {
   font-size: .5em;
 }
 .a {
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: 300;
 }
 .b {

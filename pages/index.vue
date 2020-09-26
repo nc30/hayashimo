@@ -16,13 +16,16 @@
     </div>
     <div class="rl">
       <header id="title">
-        <h1 @click="reload">Hayashimo</h1>
+        <div class="status" @click="reload">
+          <span v-if="!$store.state.connected"><i class="fas fa-unlink"></i></span>
+        </div>
+        <!-- <h1 @click="reload">Hayashimo</h1> -->
       </header>
       <miniclock />
       <notifcations/>
       <div id="attend">
-        <button :class="{disabled: $store.state.status.kintai > 0}">出勤</button>
-        <button :class="{disabled: $store.state.status.kintai == 0}">退勤</button>
+        <button :class="{disabled: $store.state.status.kintai > 0}" @click="al">出勤</button>
+        <button :class="{disabled: $store.state.status.kintai == 0}" @click="al">退勤</button>
       </div>
 
       <div id="messages">
@@ -65,6 +68,9 @@ export default {
     }
   },
   methods:{
+    al(){
+      alert("clicked")
+    },
     reload(){
       location.reload()
     }
@@ -138,6 +144,10 @@ export default {
   }
 }
 #title{
+  .status{
+    height: 1em;
+    text-align: right;
+  }
   text-align: center;
 }
 .container{
