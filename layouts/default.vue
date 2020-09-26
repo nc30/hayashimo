@@ -1,7 +1,6 @@
 <template>
   <div>
     <Nuxt />
-    }
   </div>
 </template>
 
@@ -33,9 +32,20 @@ html {
 
 }
 
+button {
+  border:none;
+  background:none;
+  border: solid white 1px;
+  border-radius: 5px;
+  color: white;
+  &:focus{
+    outline: none;
+  }
+}
+
 body {
   background-color: #ed5565;
-  color: #333;
+  color: #fff;
   overflow:hidden;
   &.hideCursor{
     cursor: none !important;
@@ -46,6 +56,7 @@ body {
 <script>
   let socket = null
   let timer = null
+
   export default{
     data(){
       return {
@@ -56,7 +67,7 @@ body {
       open(e){
         console.log("open")
         this.$store.commit('connection', true)
-        setTimeout(function(){this.reconnect = 1}, 30000)
+        setTimeout(function(){this.reconnect = 1}, 60000)
       },
       close(e){
         console.log("close")
@@ -65,6 +76,7 @@ body {
         this.recon()
       },
       recon(){
+        if(process.env.NODE_ENV != 'production') return
         timer = setTimeout(this.connect, 10000 * this.reconnect ** 2)
         console.log(this.reconnect ** 2)
         this.reconnect++
@@ -72,7 +84,6 @@ body {
       connect(){
         try{
           socket = new WebSocket('ws://127.0.0.1:3001/ws/1')
-          console.log(socket)
           socket.onopen = this.open
           socket.onclose = this.close
           // socket.addEventkListener('open', this.open)
@@ -87,6 +98,9 @@ body {
     },
     mounted(){
       this.connect()
-    }
+    },
+    beforeDestroy(){
+      socket.close()
+    },
   }
 </script>

@@ -102,6 +102,7 @@
       interval = setInterval(this.updateTime, 1800000)
     },
     destroyed (){
+      console.log("dest")
       clearInterval(interval)
     },
   }
