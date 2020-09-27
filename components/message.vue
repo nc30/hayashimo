@@ -47,6 +47,7 @@ export default{
     message(){
       this.t = true;
       setTimeout(this.toggle, 210)
+      setTimeout(this.clear, 10000)
       return this.$store.state.status.message
     }
   },

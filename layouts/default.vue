@@ -64,21 +64,28 @@ body {
       }
     },
     methods:{
+      rst(){
+        this.reconnect = 1
+      },
       open(e){
         console.log("open")
         this.$store.commit('connection', true)
-        setTimeout(function(){this.reconnect = 1}, 60000)
+        this.reconnect = this.reconnect - 1;
+        setTimeout(this.rst, 30000)
+        this.$store.commit('status/message', 'connection success!.')
       },
       close(e){
         console.log("close")
         this.$store.commit('connection', false)
         socket.close()
+
+        this.$store.commit('status/message', 'connection faild.')
         this.recon()
       },
       recon(){
         if(process.env.NODE_ENV != 'production') return
-        timer = setTimeout(this.connect, 10000 * this.reconnect ** 2)
-        console.log(this.reconnect ** 2)
+        timer = setTimeout(this.connect, 10000 * this.reconnect ** 1.5 + (Math.random() * 10000))
+        // console.log(this.reconnect ** 1.5)
         this.reconnect++
       },
       connect(){
