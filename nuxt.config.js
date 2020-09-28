@@ -4,7 +4,8 @@ export default {
   },
 
   env: {
-    NODE_ENV: process.env.NODE_ENV || 'development'
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    ws: process.env.WS || null,
   },
 
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)

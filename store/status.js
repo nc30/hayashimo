@@ -12,6 +12,14 @@ export const state = () => ({
 
 export const mutations = {
   set(state, t) {
+    state.notifcations = t.notifcations
+    state.message = t.message
+  },
+  notifcations(state, t) {
+    state.notifcations.github = t.github
+    state.notifcations.gitlab = t.gitlab
+    state.notifcations.slack = t.slack
+    state.notifcations.email = t.email
   },
   message(state, t){
     state.message = t

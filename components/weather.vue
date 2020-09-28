@@ -8,12 +8,8 @@
         <div class="m">
           <span class="cr">{{temp}}℃</span>
           <div class="cud">
-            <span class="z"><i class="fas fa-sort-up"></i> {{tempmax}}℃</span>
-            <span class="z"><i class="fas fa-sort-down"></i> {{tempmin}}℃</span>
-          </div>
-          <div class="cud">
-            <span class="z">{{current.main.pressure}}hPa</span>
-            <span class="z">{{current.main.humidity}}%</span>
+            <span class="z"><i class="fas fa-sort-up"></i> {{tempmax}}℃  {{current.main.pressure}}hPa</span>
+            <span class="z"><i class="fas fa-sort-down"></i> {{tempmin}}℃  {{current.main.humidity}}%</span>
           </div>
         </div>
       </div>
@@ -26,26 +22,31 @@
   height: 105px;
   .c{
     display:flex;
+    align-items: center;
   }
   .w{
     width: 150px;
+    margin-right: 1em;
     text-align: center;
-    // border: solid white 1px;
+
+    background: radial-gradient(#fff 25%, transparent 0),
+                radial-gradient(#fff 25%, transparent 0);
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px;
   }
   .m{
-    margin-top: 1em;
     display: flex;
     .cr{
       display: block;
-      font-size: 2.5em;
+      font-size: 3em;
       font-weight: bold;
     }
     .cud{
-      font-size: .9em;
-      padding: 10px 0 0 10px;
+      font-size: 1.5em;
+      padding: 0 0 0 10px;
       .z{
         display: block;
-        margin-bottom: -5px;
+        // margin-bottom: -5px;
       }
     }
   }

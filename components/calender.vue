@@ -12,7 +12,7 @@
       </div>
       <div v-for="w in month" class="week">
         <div v-for="d in w" class="day">
-          <span v-if="d.d" :class="{h:d.current}">{{d.d}}</span>
+          <span v-if="d.d" class="d" :class="{h:d.current}">{{d.d}}</span>
         </div>
       </div>
     </div>
@@ -40,6 +40,7 @@
     margin: 8px;
     color:#fff;
     margin-top:15px;
+    font-size: 1.3em;
     &:focus{
       outline:none;
     }
@@ -51,14 +52,22 @@
     display: flex;
   }
   .day{
-    width: 2em;
-    height: 2em;
+    min-width: 60px;
+    height: 45px;
+    font-size: 1.5em;
     text-align: center;
-    // border:solid white 1px;
-    .h{
-      display: block;
+
+    .d{
+      vertical-align: middle;
+      display: inline-block;
+      margin: auto auto;
       width: 1.6em;
       height: 1.6em;
+      text-align:center;
+    }
+    // border:solid white 1px;
+    .h{
+      // vertical-align: middle;
       background-color: #fff;
       border-radius: .8em;
       color: #ed5565;

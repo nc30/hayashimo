@@ -17,19 +17,18 @@
   // margin: 1em 2em;
   // margin: 2em auto;
   margin-bottom: 2em;
-  height: 48px;
+  height: 100px;
   box-sizing:content-box;
   ul{
     list-style: none;
     padding: 0;
   }
   li{
-    width: 48px;
     display: inline-block;
-    margin-left: 1em;
+    margin-left: 30px;
   }
   .icon{
-    font-size: 3em;
+    font-size: 100px;
     display: none;
   }
   .show{
@@ -41,7 +40,7 @@
     100% { opacity: 0; }
   }
   .blink {
-    animation: blink 3000ms ease-in infinite;
+    animation: blink 2500ms ease-in infinite;
   }
 }
 </style>

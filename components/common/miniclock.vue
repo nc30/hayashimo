@@ -61,32 +61,30 @@ export default {
 .CurrentTime {
   text-align: right;
   font-size: 2em;
-  /*color: #ffd700;*/
   color: #fff;
   background:none;
   padding-bottom: 1em;
 }
 .m {
   padding:0;
-  margin-bottom: -8px;
   border-bottom:solid #fff 2px;
   border-left: solid #fff 50px;
 }
 .n {
-  height: .9em;
+  height: 1em;
 }
 .c {
-  font-size: .5em;
+  font-size: .8em;
 }
 .a {
-  font-size: 1.8em;
-  font-weight: 300;
+  font-size: 2.5em;
+  font-weight: 400;
 }
 .b {
-  font-size: .8em;
+  font-size: 1em;
 }
 .utc{
-  font-size: .8em;
+  font-size: 1em;
   border-right: solid #fff 8px;
   padding: 0 .3em;
 }

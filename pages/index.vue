@@ -13,6 +13,7 @@
     <div class="lf">
       <weather/>
       <calender />
+      <!-- <timer/> -->
     </div>
     <div class="rl">
       <header id="title">
@@ -65,7 +66,7 @@ export default {
       alert("clicked")
     },
     reload(){
-      location.reload()
+      location.reload(true)
     }
   }
 }
@@ -114,10 +115,10 @@ export default {
   width: 100%;
   text-align: center;
   button{
-    padding: .5em 2em;
+    padding: 1em 2.5em;
     margin-left: 10px;
     // background-color: #5199e4;
-    font-size: 1.4em;
+    font-size: 1.6em;
     font-weight: bold;
     // border:none;
     background-color: #fff;

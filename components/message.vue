@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.5em;
   }
   .anime{
     animation: anime1 200ms 1 alternate;
