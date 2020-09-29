@@ -60,11 +60,6 @@
     data(){
       return {
         current: null,
-        current_: {
-    "base": "stations", "clouds": {"all": 75 }, "cod": 200, "coord": {"lat": 35.18, "lon": 136.91 }, "dt": 1601102133, "id": 1856057, "main": {"feels_like": 302.12, "humidity": 73, "pressure": 1006, "temp": 300.8, "temp_max": 302.59, "temp_min": 298.15 }, "name": "Nagoya", "sys": {"country": "JP", "id": 8009, "sunrise": 1601066592, "sunset": 1601109850, "type": 1 }, "timezone": 32400, "visibility": 10000, "weather": [{"description": "broken clouds", "icon": "04d", "id": 803, "main": "Clouds"} ], "wind": {"deg": 280, "speed": 5.1
-    }
-}
-
       }
     },
     computed:{
@@ -90,7 +85,6 @@
         this.$store.commit('loader', true)
         try{
           let a = await this.$axios.get('https://api.openweathermap.org/data/2.5/weather?q=nagoya&appid=dffc2931fec59c535cbf54b1d1e3f686')
-          console.log(a.data)
           this.current = a.data
         }catch(e){
           console.log(e.data)

@@ -2,13 +2,13 @@
   <div id="calender">
     <div class="w">
       <div class="week">
-        <div class="day h">日</div>
-        <div class="day ">月</div>
-        <div class="day ">火</div>
-        <div class="day ">水</div>
-        <div class="day ">木</div>
-        <div class="day ">金</div>
-        <div class="day h">土</div>
+        <div class="day">日</div>
+        <div class="day">月</div>
+        <div class="day">火</div>
+        <div class="day">水</div>
+        <div class="day">木</div>
+        <div class="day">金</div>
+        <div class="day">土</div>
       </div>
       <div v-for="w in month" class="week">
         <div v-for="d in w" class="day">
@@ -18,10 +18,14 @@
     </div>
     <div class="inf">
       <h2>昭和{{y-1925}}年{{m}}月</h2>
-      <p style="text-align: center">{{mun}}</p>
-      <button @click="bck"><i class="fas fa-chevron-left"></i></button>
-      <button @click="cr">current</button>
-      <button @click="nxt"><i class="fas fa-chevron-right"></i></button>
+      <p style="text-align: center;font-size:1.3em;padding-bottom:0.5em;">{{mun}}</p>
+      <div style="display:flex;">
+        <button @click="cr" :class="{current: current}">current</button>
+        <div>
+          <button class="nb" @click="bck"><i class="fas fa-chevron-left"></i></button>
+          <button class="nb" @click="nxt"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +34,7 @@
 #calender{
   display: flex;
   h2{
+    font-size: 1.8em;
     text-align: center;
   }
   button{
@@ -44,9 +49,19 @@
     &:focus{
       outline:none;
     }
+    &.current{
+      background-color: #fff;
+      color:#ed5565;
+    }
+  }
+  .w{
+    padding: .5em;
   }
   .inf{
     padding-left: 1em;
+    .nb{
+      padding: 1em 1.2em;
+    }
   }
   .week{
     display: flex;
@@ -72,11 +87,6 @@
       border-radius: .8em;
       color: #ed5565;
     }
-  }
-  .w{
-    min-width:240px;
-    // border: solid white 1px;
-    padding: .5em;
   }
 }
 </style>
@@ -136,6 +146,9 @@ export default{
       this.d = c
       this.current = true
     },
+    rf(){
+      this.current && this.cr
+    }
   },
   computed:{
     mun(){
@@ -177,7 +190,7 @@ export default{
   },
   mounted(){
     this.cr()
-    interval = setInterval(function(){this.current&&this.cr}, 60000)
+    interval = setInterval(this.rf, 60000)
   },
   destroyed (){
     clearInterval(interval)

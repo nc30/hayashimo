@@ -24,11 +24,7 @@
       </header>
       <miniclock />
       <notifcations/>
-      <div id="attend">
-        <button :class="{disabled: $store.state.status.kintai > 0}" @click="al">出勤</button>
-        <button :class="{disabled: $store.state.status.kintai == 0}" @click="al">退勤</button>
-      </div>
-
+      <AttendButton/>
       <message/>
 
       <div id="messages">
@@ -62,9 +58,6 @@ export default {
     }
   },
   methods:{
-    al(){
-      alert("clicked")
-    },
     reload(){
       location.reload(true)
     }
@@ -108,33 +101,6 @@ export default {
     border-bottom-right-radius: 5px;
     border-left: none;
     color: #fff;
-  }
-}
-#attend{
-  text-align: right;
-  width: 100%;
-  text-align: center;
-  button{
-    padding: 1em 2.5em;
-    margin-left: 10px;
-    // background-color: #5199e4;
-    font-size: 1.6em;
-    font-weight: bold;
-    // border:none;
-    background-color: #fff;
-    color: #ed5565;
-    border:solid #fff 2px;
-    border-radius:10px;
-    &:focus{
-      outline:none;
-    }
-    &.disabled{
-      // background-color: #4a649e;
-      // color: #c7c7c7;
-      background:none;
-      color: #ffe3e3;
-      border-color: #ffe3e3;
-    }
   }
 }
 #title{

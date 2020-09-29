@@ -81,10 +81,8 @@ export default {
   font-weight: 400;
 }
 .b {
-  font-size: 1em;
 }
 .utc{
-  font-size: 1em;
   border-right: solid #fff 8px;
   padding: 0 .3em;
 }
