@@ -113,31 +113,42 @@ import moment_timezone from 'moment-timezone'
 
 export default{
   data(){
+    let d = new Date()
     return {
-      y: 2020,
-      m: 9,
-      d: new Date(),
+      y: d.getFullYear(),
+      m: d.getMonth() + 1,
+      d: d,
       current: true,
     }
   },
   methods:{
     nxt(){
-      this.current = false
       this.m += 1
       if(this.m >= 13){
         this.m = 1
         this.y += 1
       }
-      timeout = setTimeout(this.cr, 600000)
+      const n = new Date()
+      if(this.y == n.getFullYear()&&this.m == n.getMonth()+1){
+        this.current = true
+      }else{
+        this.current = false
+        timeout = setTimeout(this.cr, 600000)
+      }
     },
     bck(){
-      this.current = false
       this.m -= 1
       if(this.m <= 0){
         this.m = 12
         this.y -= 1
       }
-      timeout = setTimeout(this.cr, 180000)
+      const n = new Date()
+      if(this.y == n.getFullYear()&&this.m == n.getMonth()+1){
+        this.current = true
+      }else{
+        this.current = false
+        timeout = setTimeout(this.cr, 600000)
+      }
     },
     cr(){
       let c = new Date()
@@ -147,7 +158,7 @@ export default{
       this.current = true
     },
     rf(){
-      this.current && this.cr
+      this.current && this.cr()
     }
   },
   computed:{
@@ -156,16 +167,16 @@ export default{
     },
     month(){
       let r = [];
-      const start = new Date(this.y, this.m, 1)
-      const startWeek = (start.getDay() + 5) % 7
+      const start = new Date(this.y, this.m-1, 1)
+      const startWeek = (start.getDay()) % 7
       let buf = []
       for(let i=0;i<7;i++){
         if(i<startWeek){buf[i]={d:null};continue}
 
         buf[i] = {
-          d: i - startWeek + 1
+          d: i - startWeek + 1,
         }
-        if(this.d.getDate() == buf[i]['d']&&this.m==this.d.getMonth()+1) buf[i]['current'] = true
+        buf[i]['current'] = (this.d.getDate() == buf[i]['d']&&this.m==this.d.getMonth()+1)
       }
       r[0] = buf
 
@@ -173,15 +184,15 @@ export default{
         let s = []
         for(let i=0;i<7;i++){
           let d = r[0][6]['d'] + z * 7 + i + 1
-          const day = new Date(this.y, this.m, d)
+          const day = new Date(this.y, this.m-1, d)
           if (day.getDate() != d){
             if(i!=0) r.push(s)
             break;
           }
           s[i] = {
             d: d,
+            current: (this.d.getDate() == d&&this.m==this.d.getMonth()+1),
           }
-          if(this.d.getDate() == d&&this.m==this.d.getMonth()+1) s[i]['current'] = true
           if(i==6) r.push(s)
         }
       }
